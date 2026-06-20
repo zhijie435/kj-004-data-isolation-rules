@@ -557,11 +557,20 @@ async function fetchData() {
     tableData.value = res.data.data
     total.value = res.data.total
 
-    stats.value = {
-      total: res.data.total,
-      enabled: tableData.value.filter((r) => r.is_enabled).length,
-      disabled: tableData.value.filter((r) => !r.is_enabled).length,
-      modelCount: new Set(tableData.value.map((r) => r.model_class)).size
+    if (res.data.stats) {
+      stats.value = {
+        total: res.data.stats.total,
+        enabled: res.data.stats.enabled,
+        disabled: res.data.stats.disabled,
+        modelCount: res.data.stats.modelCount
+      }
+    } else {
+      stats.value = {
+        total: res.data.total,
+        enabled: tableData.value.filter((r) => r.is_enabled).length,
+        disabled: tableData.value.filter((r) => !r.is_enabled).length,
+        modelCount: new Set(tableData.value.map((r) => r.model_class)).size
+      }
     }
   } catch (error) {
     console.error('获取规则列表失败:', error)

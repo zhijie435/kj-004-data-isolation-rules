@@ -44,6 +44,12 @@ class DataIsolationRuleController extends Controller
             return $this->transformRule($rule);
         });
 
+        $statsQuery = DataIsolationRule::query();
+        $enabledCount = $statsQuery->clone()->where('is_active', true)->count();
+        $disabledCount = $statsQuery->clone()->where('is_active', false)->count();
+        $totalCount = $statsQuery->clone()->count();
+        $modelCount = $statsQuery->clone()->distinct('model')->count('model');
+
         return response()->json([
             'success' => true,
             'data' => [
@@ -52,6 +58,12 @@ class DataIsolationRuleController extends Controller
                 'current_page' => $rules->currentPage(),
                 'per_page' => $rules->perPage(),
                 'last_page' => $rules->lastPage(),
+                'stats' => [
+                    'total' => $totalCount,
+                    'enabled' => $enabledCount,
+                    'disabled' => $disabledCount,
+                    'modelCount' => $modelCount,
+                ],
             ],
         ]);
     }

@@ -23,7 +23,6 @@ class DataIsolationRule extends Model
         'params',
         'field_mapping',
         'is_active',
-        'is_enabled',
         'priority',
         'description',
     ];
