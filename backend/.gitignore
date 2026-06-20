@@ -1,0 +1,65 @@
+# Logs
+*.log
+*.log.*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools
+coverage/
+*.lcov
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Build output
+dist/
+build/
+public/build/
+public/hot/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Laravel specific
+bootstrap/cache/*.php
+bootstrap/cache/*.js
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+storage/debugbar/*
+storage/clockwork/*
+
+# PHPUnit
+.phpunit.result.cache
+.phpunit.cache/
+
+# Composer
+composer.phar
+
+# Homestead
+Homestead.json
+Homestead.yaml
+.phpunit.result.cache
+
+# Sail
+/.docker/
+docker-compose.yml
