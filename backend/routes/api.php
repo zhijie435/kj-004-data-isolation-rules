@@ -16,7 +16,9 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
         Route::get('/rules/{rule}', [\App\Http\Controllers\Api\DataIsolationRuleController::class, 'show']);
         Route::put('/rules/{rule}', [\App\Http\Controllers\Api\DataIsolationRuleController::class, 'update']);
         Route::delete('/rules/{rule}', [\App\Http\Controllers\Api\DataIsolationRuleController::class, 'destroy']);
+        Route::post('/rules/{rule}/toggle', [\App\Http\Controllers\Api\DataIsolationRuleController::class, 'toggle']);
         Route::get('/rule-types', [\App\Http\Controllers\Api\DataIsolationRuleController::class, 'getRuleTypes']);
+        Route::get('/model-classes', [\App\Http\Controllers\Api\DataIsolationRuleController::class, 'getModelClasses']);
         Route::post('/test-rule', [\App\Http\Controllers\Api\DataIsolationRuleController::class, 'testRule']);
     });
 

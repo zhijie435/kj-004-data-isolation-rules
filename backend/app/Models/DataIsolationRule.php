@@ -11,12 +11,17 @@ class DataIsolationRule extends Model
 
     protected $fillable = [
         'name',
+        'code',
         'type',
         'model',
+        'scope',
         'role',
         'field',
         'operator',
         'value',
+        'condition_expression',
+        'params',
+        'field_mapping',
         'is_active',
         'is_enabled',
         'priority',
@@ -26,6 +31,8 @@ class DataIsolationRule extends Model
     protected $casts = [
         'is_active' => 'boolean',
         'priority' => 'integer',
+        'params' => 'array',
+        'field_mapping' => 'array',
     ];
 
     protected $appends = ['is_enabled'];
