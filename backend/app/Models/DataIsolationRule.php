@@ -18,6 +18,7 @@ class DataIsolationRule extends Model
         'operator',
         'value',
         'is_active',
+        'is_enabled',
         'priority',
         'description',
     ];
@@ -26,6 +27,18 @@ class DataIsolationRule extends Model
         'is_active' => 'boolean',
         'priority' => 'integer',
     ];
+
+    protected $appends = ['is_enabled'];
+
+    public function getIsEnabledAttribute(): bool
+    {
+        return $this->is_active;
+    }
+
+    public function setIsEnabledAttribute($value): void
+    {
+        $this->attributes['is_active'] = (bool) $value;
+    }
 
     const TYPE_TENANT = 'tenant';
     const TYPE_ROLE = 'role';

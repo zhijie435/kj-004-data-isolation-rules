@@ -654,12 +654,14 @@ async function handleSubmit() {
 }
 
 async function handleToggle(row) {
+  const originalStatus = !row.is_enabled
   try {
-    await toggleDataIsolationRule(row.id)
+    await toggleDataIsolationRule(row.id, row.is_enabled)
     ElMessage.success(row.is_enabled ? '已启用' : '已禁用')
+    fetchData()
   } catch (error) {
     console.error('切换状态失败:', error)
-    row.is_enabled = !row.is_enabled
+    row.is_enabled = originalStatus
   }
 }
 
